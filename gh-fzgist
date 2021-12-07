@@ -2,5 +2,9 @@
 set -ue
 
 GIST=$(gh gist list | fzf | awk '{print $1}')
-echo $GIST
+
+if [ $? -ne 0 ]; then
+    exit 1
+fi
+
 gh gist edit $GIST
