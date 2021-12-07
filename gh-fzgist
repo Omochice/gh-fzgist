@@ -1,10 +1,22 @@
 #!/usr/bin/env bash
 set -ue
 
-GIST=$(gh gist list | fzf | awk '{print $1}')
+ACTION=$(cat << EOF | fzf
+clone
+delete
+edit
+view
+EOF
+)
 
 if [ $? -ne 0 ]; then
     exit 1
 fi
 
-gh gist edit $GIST
+GIST=$(gh gist list | fzf --prompt="gh gist $ACTION > " | awk '{print $1}')
+
+if [ $GIST -z ]; then
+    exit 1
+fi
+
+gh gist $ACTION "$GIST"
