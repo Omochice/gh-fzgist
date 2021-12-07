@@ -1,0 +1,4 @@
+#!/usr/bin/env bash -ue
+
+GIST=(gh gist list | fzf | awk '{print $1}')
+gh gist edit $GIST
