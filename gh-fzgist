@@ -15,8 +15,8 @@ fi
 
 GIST=$(gh gist list --limit 50 | fzf --prompt="gh gist $ACTION > " --height=40% | awk '{print $1}')
 
-if [ $GIST -z ]; then
+if [ -z $GIST ]; then
     exit 1
 fi
 
-gh gist $ACTION "$GIST"
+gh gist $ACTION $GIST
