@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 set -ue
 
-ACTION=$(cat << EOF | fzf
+ACTION=$(cat << EOF | fzf --prompt="gh gist > " --height=40%
 clone
 delete
 edit
@@ -13,7 +13,7 @@ if [ $? -ne 0 ]; then
     exit 1
 fi
 
-GIST=$(gh gist list | fzf --prompt="gh gist $ACTION > " | awk '{print $1}')
+GIST=$(gh gist list --limit 50 | fzf --prompt="gh gist $ACTION > " --height=40% | awk '{print $1}')
 
 if [ $GIST -z ]; then
     exit 1
