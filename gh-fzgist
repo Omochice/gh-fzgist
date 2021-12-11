@@ -17,7 +17,7 @@ else
   ACTION=$1
 fi
 
-GIST=$(gh gist list --limit 50 | fzf --prompt="gh gist $ACTION > " --height=40% | awk '{print $1}')
+GIST=$(gh gist list --limit 50 | fzf --prompt="gh gist $ACTION > " --height=40% --preview="echo {} | awk '{print \$1}' | xargs -n 1 gh gist view" | awk '{print $1}')
 
 if [ -z $GIST ]; then
     exit 1
