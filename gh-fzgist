@@ -10,7 +10,7 @@ edit
 view
 EOF
   )
-  if [ $? -ne 0 ]; then
+  if [ -z "$ACTION" ]; then
       exit 1
   fi
 else
@@ -19,8 +19,8 @@ fi
 
 GIST=$(gh gist list --limit 50 | fzf --prompt="gh gist $ACTION > " --height=40% | awk '{print $1}')
 
-if [ -z $GIST ]; then
+if [ -z "$GIST" ]; then
     exit 1
 fi
 
-gh gist $ACTION $GIST
+gh gist "$ACTION" "$GIST"
