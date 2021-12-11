@@ -10,7 +10,7 @@ gh extension install Omochice/gh-fzgist
 
 ## Usage
 
-![video](https://i.gyazo.com/43b7ba9c8b2ae506fe6d3eb17fe3e6ae.gif)
+![video](https://i.gyazo.com/91651616e826c987bdc7b5de2a06f2b7.gif)
 
 ## Lisence
 
